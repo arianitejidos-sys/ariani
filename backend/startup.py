@@ -48,4 +48,7 @@ finally:
 # ── 3. Start uvicorn ─────────────────────────────────────────────────────────
 port = os.getenv("PORT", "8000")
 print(f">>> Starting server on port {port}...")
-os.execvp("uvicorn", ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", port])
+
+# Use the uvicorn from the same venv as this Python to avoid PATH issues
+uvicorn_bin = os.path.join(os.path.dirname(sys.executable), "uvicorn")
+os.execv(uvicorn_bin, [uvicorn_bin, "app.main:app", "--host", "0.0.0.0", "--port", port])
