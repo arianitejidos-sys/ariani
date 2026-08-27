@@ -1,4 +1,4 @@
-const API_URL = 'http://localhost:8000';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 function formatErrorMessage(errData, defaultMsg = 'Error en la solicitud') {
   if (!errData) return defaultMsg;
