@@ -36,7 +36,7 @@ export default function Footer() {
         </div>
         
         <div className="footer__social">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Ariani" className="footer__social-link">
+          <a href="https://www.instagram.com/arianicrochet" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Ariani" className="footer__social-link">
             <InstagramIcon size={24} />
           </a>
         </div>
