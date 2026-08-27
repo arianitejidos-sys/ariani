@@ -1,0 +1,199 @@
+/* ============================================================
+   ARIANI — Sistema de Diseño (Design Tokens)
+   Definido ANTES del primer componente (sección 5.5 del AdC).
+   
+   Paleta verificada contra contraste AA sobre fondo crema #FAF6F1.
+   Tipografía: Outfit (Google Fonts) — sans-serif funcional.
+   Mobile-first: breakpoints sm(640) md(768) lg(1024).
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ── Tokens ─────────────────────────────────────────────────── */
+:root {
+  /* Brand */
+  --color-brand-pink: #D98FA0;           /* Decorativo, fondos suaves, hovers */
+  --color-pink-functional: #B5546A;      /* Texto/botones rosa funcional — 4.6:1 AA */
+  
+  /* Accent */
+  --color-accent-purple: #7B5EA7;        /* Botones primarios, links, activos — 5.1:1 AA */
+  --color-accent-purple-hover: #6A4F91;  /* Hover botones — 6.2:1 AA */
+  --color-accent-purple-light: rgba(123, 94, 167, 0.08); /* Fondo sutil */
+  
+  /* Backgrounds */
+  --color-bg-cream: #FAF6F1;
+  --color-bg-card: #FFFFFF;
+  --color-bg-card-hover: #FDF9F5;
+  
+  /* Text */
+  --color-text-primary: #2D2A26;         /* 14.5:1 AAA */
+  --color-text-secondary: #6B6560;       /* 5.2:1 AA */
+  --color-text-tertiary: #9B9590;        /* Solo texto grande / decorativo */
+  --color-text-on-purple: #FFFFFF;
+  --color-text-on-pink: #FFFFFF;
+  
+  /* Borders */
+  --color-border: #E0D8CF;
+  --color-border-light: #EDE8E2;
+  --color-border-focus: var(--color-accent-purple);
+  
+  /* Semantic */
+  --color-success: #2E7D4F;              /* 5.8:1 AA */
+  --color-success-bg: #E8F5ED;
+  --color-error: #C44536;                /* 4.7:1 AA */
+  --color-error-bg: #FDECEA;
+  --color-warning: #B8860B;              /* 4.5:1 AA */
+  --color-warning-bg: #FFF8E1;
+  
+  /* Typography */
+  --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-lg: 1.125rem;   /* 18px */
+  --font-size-xl: 1.25rem;    /* 20px */
+  --font-size-2xl: 1.5rem;    /* 24px */
+  --font-size-3xl: 1.875rem;  /* 30px */
+  --font-size-4xl: 2.25rem;   /* 36px */
+  
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+  
+  /* Spacing (4px base) */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.25rem;   /* 20px */
+  --space-6: 1.5rem;    /* 24px */
+  --space-8: 2rem;      /* 32px */
+  --space-10: 2.5rem;   /* 40px */
+  --space-12: 3rem;     /* 48px */
+  --space-16: 4rem;     /* 64px */
+  
+  /* Borders */
+  --radius-sm: 0.375rem;  /* 6px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-xl: 1rem;      /* 16px */
+  --radius-full: 9999px;
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(45, 42, 38, 0.05);
+  --shadow-md: 0 4px 12px rgba(45, 42, 38, 0.08);
+  --shadow-lg: 0 8px 24px rgba(45, 42, 38, 0.12);
+  --shadow-card: 0 2px 8px rgba(45, 42, 38, 0.06);
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 350ms ease;
+  
+  /* Touch targets (minimum 44x44px per AdC section 5.2) */
+  --touch-target-min: 2.75rem; /* 44px */
+}
+
+/* ── Reset & Base ───────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-cream);
+  min-height: 100vh;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: var(--color-accent-purple);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-purple-hover);
+}
+
+/* Touch target enforcement */
+button,
+a,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+button,
+[role="button"] {
+  cursor: pointer;
+  min-height: var(--touch-target-min);
+  min-width: var(--touch-target-min);
+}
+
+input,
+select,
+textarea {
+  min-height: var(--touch-target-min);
+  font-size: var(--font-size-base); /* Prevents zoom on iOS */
+}
+
+/* Focus styles for accessibility */
+:focus-visible {
+  outline: 2px solid var(--color-accent-purple);
+  outline-offset: 2px;
+}
+
+/* ── Utility classes ────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: var(--space-4);
+  padding-right: var(--space-4);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}

@@ -1,0 +1,202 @@
+/* Product Detail Modal */
+.pdm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  animation: fadeIn var(--transition-fast) ease-out;
+}
+
+.pdm-card {
+  position: relative;
+  background-color: var(--color-bg-card);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideUp var(--transition-base) ease-out;
+}
+
+.pdm-close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-full);
+  padding: var(--space-2);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  z-index: 2;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pdm-close:hover {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.pdm-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 640px) {
+  .pdm-layout {
+    flex-direction: row;
+  }
+}
+
+/* Image */
+.pdm-image-wrapper {
+  position: relative;
+  flex-shrink: 0;
+  background-color: var(--color-bg-cream);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+}
+
+@media (min-width: 640px) {
+  .pdm-image-wrapper {
+    width: 50%;
+    border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+  }
+}
+
+.pdm-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .pdm-image {
+    border-radius: var(--radius-xl) 0 0 var(--radius-xl);
+    max-height: 420px;
+  }
+}
+
+.pdm-image-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  padding: var(--space-8);
+}
+
+.pdm-badge-soldout {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  background-color: var(--color-error);
+  color: #fff;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+/* Info */
+.pdm-info {
+  padding: var(--space-6);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex: 1;
+}
+
+.pdm-category {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-accent-purple);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.pdm-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  line-height: 1.2;
+}
+
+.pdm-description {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.pdm-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pdm-price {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-accent-purple);
+}
+
+.pdm-stock {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-success);
+  background-color: var(--color-success-bg);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-full);
+}
+
+.pdm-stock--zero {
+  color: var(--color-error);
+  background-color: var(--color-error-bg);
+}
+
+.pdm-divider {
+  height: 1px;
+  background-color: var(--color-border-light);
+  margin: var(--space-2) 0;
+}
+
+.pdm-admin-note {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-tertiary);
+  font-style: italic;
+  padding: var(--space-3);
+  background-color: var(--color-bg-cream);
+  border-radius: var(--radius-md);
+}
+
+.pdm-shipping-note {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-tertiary);
+  text-align: center;
+  margin-top: var(--space-2);
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
