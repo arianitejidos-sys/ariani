@@ -31,7 +31,11 @@ export async function apiFetch(endpoint, options = {}) {
     const message = formatErrorMessage(errorData, `Error ${res.status}: ${res.statusText}`);
     throw new Error(message);
   }
-  return res.json();
+  
+  if (res.status === 204) return null;
+  
+  const text = await res.text();
+  return text ? JSON.parse(text) : null;
 }
 
 // Auth
@@ -90,16 +94,7 @@ export const createOrder = (data) => {
 
 export const getOrders = () => apiFetch('/orders/');
 export const updateOrder = (id, data) => apiFetch(`/orders/${id}`, { method: 'PUT', body: JSON.stringify(data) });
-export const deleteOrder = (id) => {
-  const token = localStorage.getItem('ariani_token');
-  return fetch(`${API_URL}/orders/${id}`, {
-    method: 'DELETE',
-    headers: token ? { Authorization: `Bearer ${token}` } : {},
-  }).then(res => {
-    if (!res.ok) return res.json().then(d => { throw new Error(formatErrorMessage(d)); });
-    return null;
-  });
-};
+export const deleteOrder = (id) => apiFetch(`/orders/${id}`, { method: 'DELETE' });
 
 export const clientConfirmOrder = (id, action) => {
   return apiFetch(`/orders/${id}/client-confirm?action=${action}`, {
