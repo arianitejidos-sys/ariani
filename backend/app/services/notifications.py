@@ -97,19 +97,21 @@ def get_base_html_template(title: str, content_html: str) -> str:
                 width: 100%;
                 border-collapse: collapse;
                 margin: 20px 0;
+                table-layout: fixed;
+                word-wrap: break-word;
             }}
             .items-table th {{
                 text-align: left;
-                padding: 10px;
+                padding: 8px 4px;
                 background-color: #F7FAFC;
                 border-bottom: 2px solid #E2E8F0;
-                font-size: 13px;
+                font-size: 12px;
                 color: #4A5568;
             }}
             .items-table td {{
-                padding: 12px 10px;
+                padding: 10px 4px;
                 border-bottom: 1px solid #EDF2F7;
-                font-size: 14px;
+                font-size: 13px;
             }}
             .total-row {{
                 font-weight: bold;
