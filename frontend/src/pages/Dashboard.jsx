@@ -287,6 +287,10 @@ export default function Dashboard() {
                           </div>
                         )
                       ))
+                    ) : order.reference_images && order.reference_images.length > 0 ? (
+                      order.reference_images.slice(0, 4).map((url, idx) => (
+                        <img key={idx} src={url} alt={`Referencia ${idx+1}`} className="order-card__collage-img" title="Imagen de referencia" />
+                      ))
                     ) : (
                       <span className="order-type-tag">
                         {order.order_type === 'custom' ? 'Personalizado' : (order.order_type === 'pet_catalog' ? 'Mascotas' : 'Catálogo')}
@@ -295,6 +299,11 @@ export default function Dashboard() {
                     {order.items && order.items.length > 4 && (
                       <div className="order-card__collage-placeholder" style={{ fontSize: '0.75rem', fontWeight: 'bold' }}>
                         +{order.items.length - 4}
+                      </div>
+                    )}
+                    {order.reference_images && order.reference_images.length > 4 && (
+                      <div className="order-card__collage-placeholder" style={{ fontSize: '0.75rem', fontWeight: 'bold' }}>
+                        +{order.reference_images.length - 4}
                       </div>
                     )}
                   </div>

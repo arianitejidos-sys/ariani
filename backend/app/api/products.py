@@ -17,7 +17,6 @@ router = APIRouter()
 @router.post("/upload-image")
 def upload_product_image(
     image: UploadFile = File(...),
-    current_user: User = Depends(get_current_user),
 ):
     """Upload a product image to Cloudinary and return its secure URL."""
     if not settings.CLOUDINARY_URL:

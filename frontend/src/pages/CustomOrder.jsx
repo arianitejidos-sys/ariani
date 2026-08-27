@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { Send, Upload, X, Image as ImageIcon } from 'lucide-react';
 import { createOrder, uploadProductImage } from '../api/client';
+import { useAuth } from '../context/AuthContext';
 import Button from '../components/Button';
 import './CustomOrder.css';
 
 export default function CustomOrder() {
+  const { isAuthenticated } = useAuth();
   const [formData, setFormData] = useState({
     customer_name: '',
     customer_email: '',
@@ -82,6 +85,18 @@ export default function CustomOrder() {
       setLoading(false);
     }
   };
+
+  if (isAuthenticated) {
+    return (
+      <main className="custom-order container">
+        <div className="custom-order__success" style={{ textAlign: 'center' }}>
+          <h2>Acceso denegado</h2>
+          <p>Las cuentas de administrador no pueden crear pedidos. Utiliza una ventana de incógnito si deseas probar el flujo de cliente.</p>
+          <Button onClick={() => window.location.href = '/dashboard'}>Volver al Dashboard</Button>
+        </div>
+      </main>
+    );
+  }
 
   if (success) {
     return (

@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { X, Minus, Plus, Trash2, ShoppingCart, ShoppingBag } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useAuth } from '../context/AuthContext';
 import Button from './Button';
 import CheckoutModal from './CheckoutModal';
 import './CartDrawer.css';
 
 export default function CartDrawer() {
+  const { isAuthenticated } = useAuth();
   const {
     cartItems,
     cartCount,
@@ -110,16 +112,25 @@ export default function CartDrawer() {
                   * El costo de envío será cotizado por Ana después de tu pedido.
                 </p>
                 <div className="cart-drawer__actions">
-                  <Button
-                    fullWidth
-                    variant="primary"
-                    onClick={() => {
-                      closeCart();
-                      setShowCheckout(true);
-                    }}
-                  >
-                    Proceder al Pago
-                  </Button>
+                  {isAuthenticated ? (
+                    <div style={{ textAlign: 'center', marginBottom: 'var(--space-2)' }}>
+                      <p style={{ color: 'var(--color-error)', fontSize: '0.875rem', marginBottom: '4px' }}>
+                        Las administradoras no pueden hacer pedidos.
+                      </p>
+                      <Button fullWidth variant="primary" disabled>Proceder al Pago</Button>
+                    </div>
+                  ) : (
+                    <Button
+                      fullWidth
+                      variant="primary"
+                      onClick={() => {
+                        closeCart();
+                        setShowCheckout(true);
+                      }}
+                    >
+                      Proceder al Pago
+                    </Button>
+                  )}
                   <button className="cart-drawer__clear-btn" onClick={clearCart}>
                     Vaciar carrito
                   </button>
